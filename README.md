@@ -258,7 +258,7 @@ import { RectangleComponent } from './rectangle/rectangle.component';
 export class AppModule { }
 ```
 ## OUTPUT:
-![out](./image.jpeg)
+![out](./img.PNG)
 
 ## Result:
 Thus a Mathmetical Calculation website is created using Angular.
