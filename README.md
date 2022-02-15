@@ -33,9 +33,232 @@ Publish the website in the given URL.
 
 ## PROGRAM :
 
+### app.component.html:
+```
+<body>
+  <div class="container">
+  <div class="content">
+  <Rectangle-Area></Rectangle-Area>
+  <div class="footer">Developed By Harini.B</div>
+  </div>
+  <div class="content">
+    <Cylinder-Volume></Cylinder-Volume>
+    <div class="footer">Developed By Harini.B</div>
+    </div>
+    </div>
+    </body>
+```
+### app.component.css:
+```
+* {
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  body {
+    background-color:rgb(0, 0, 0);
+  }
+  .container {
+    width:1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 300px;
+    max-height:max-content;
+    background-color:rgb(0, 0, 0);
+    padding-bottom: 45px; ;
+  }
+  .content {
+    display:block;
+    width: 500px;
+    background-color:rgb(247, 144, 221);
+    min-height: 150px;
+    font-size: 20px;
+    position:relative;
+    
+  }
+  h1{
+    text-align: center;
+    color:rgb(255, 255, 255);
+  }
+  
+  .footer {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    background-color:rgb(247, 144, 221);
+    text-align:right;
+    padding-top: 30px;
+    margin: 0px 0px 0px 0px;
+    color: black
+  }
+```
+### app.component.ts:
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'mathcalculations';
+}
+```
+### rectangle.component.html:
+```
+<h2>Area of a Rectangle</h2>
+    <div class="formelement">
+    Length=<input type="text" [(ngModel)]="length"> Meters <br/>
+    </div>
+    <div class="formelement">
+    Breadth=<input type="text" [(ngModel)]="breadth"> Meters <br/>
+    </div>
+    <div class="formelement">
+        <input type="button" (click)="onCalculate()" value="Calculate Area"> <br/>
+    </div>
+    <div class="formelement">
+    Area=<input type="text" [value]="area"> Meter<sup>2</sup>
+    </div>
+```
+### rectangle.component.css:
+```
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .container {
+    width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+    padding-left: 300px;
+    padding-bottom: 500px;
+  }
+  .content {
+    display:block;
+    width: 500px;
+    background-color:white;
+    min-height: 150px;
+    font-size: 20px;
+  }
+  h2{
+      text-align: center;
+      padding-top: 25px;
+  }
+  .formelement{
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+```
+### rectangle.component.ts:
+```
+import { Component } from "@angular/core"
+
+@Component({
+    selector: 'Rectangle-Area',
+    templateUrl:'./rectangle.components.html',
+    styleUrls:['./rectangle.component.css']
+})
+export class RectangleComponent{
+    length:number;
+    breadth:number;
+    area:number;
+    constructor(){
+        this.length=0;
+        this.breadth=0;
+        this.area =this.length * this.breadth;
+
+    }
+    onCalculate()
+    {
+        this.area =  this.length * this.breadth;
+    }
+}
+```
+### cylinder.component.html:
+```
+<h2>Volume of a Cylinder</h2>
+<div class="formelement">
+Radius=<input type="text" [(ngModel)]="radius"> Meters <br/>
+</div>
+<div class="formelement">
+Height=<input type="text" [(ngModel)]="height"> Meters <br/>
+</div>
+<div class="formelement">
+    <input type="button" (click)="onCalculate()" value="Calculate Volume"> <br/>
+</div>
+<div class="formelement">
+Volume=<input type="text" [value]="volume"> Meter<sup>3</sup>
+</div>
+```
+### cylinder.component.css:
+```
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  h2{
+      text-align: center;
+      padding-top: 25px;
+  }
+  .formelement{
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+```
+### cylinder.component.ts:
+```
+import { Component } from "@angular/core"
+
+@Component({
+    selector: 'Cylinder-Volume',
+    templateUrl:'./cylinder.component.html',
+    styleUrls:['./cylinder.component.css']
+
+})
+export class CylinderComponent{
+    radius:number;
+    height:number;
+    volume:number;
+    constructor(){
+        this.radius=0;
+        this.height=0;
+        this.volume =3.14 * this.radius * this.radius * this.height ;
+        
+    }
+    onCalculate()
+    {
+        this.volume = 3.14 * this.radius * this.radius * this.height ;
+    }
+}
+```
+### app.module.ts:
+```
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
+import { CylinderComponent } from './cylinder/cylinder.component';
+import { RectangleComponent } from './rectangle/rectangle.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,RectangleComponent,CylinderComponent
+  ],
+  imports: [
+    BrowserModule,FormsModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 ## OUTPUT:
-
-### Home Page:
-
+![out](./image.jpeg)
 
 ## Result:
+Thus a Mathmetical Calculation website is created using Angular.
